@@ -1,0 +1,591 @@
+  <nav>
+  <div class="logo-cont"><p class="logo">PicturePulse</p></div>
+  <ul>
+    <li class="nav-item active">
+      <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/user-about">About</a>
+    </li>
+    {{#unless user}}
+    <li class="nav-item">
+      <a href="/user-login" class="nav-link" style="text-decoration: none;">Login / Signup</a>
+    </li>
+    {{/unless}}
+    {{#if user}}
+    <li class="nav-item">
+      <a class="nav-link" href="/user-logout">Logout</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/user-profile"><i class="fa-solid fa-user" style="color: #FFD43B;"></i></a>
+    </li>
+    {{/if}}
+  </ul>
+  <div class="search-main">
+    <form action="/search" method="GET" class="search">
+      <input placeholder="Search..." type="text" name="q" required>
+      <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+    </form>
+  </div>
+</nav>
+
+<div class="about md">
+    <div class="aboutus">
+    
+        <div class="heading" style="margin-bottom: 4rem;">
+            <h2><b><i>Welcome to PicturePulse!</i></b></h2> 
+                <p><b>PicturePulse invites users into a dynamic digital space where cinephiles can discover, discuss, and critique the latest films.<br>
+                      The app's story begins with its sleek, user-friendly interface, guiding users through a visually appealing home screen filled  with the <br> latest blockbusters, indie gems, and classic favorites.
+                      Each movie profile offers detailed information, including trailers, cast and crew lists, <br> and synopses.
+                      Registered users can write and publish their reviews, rate movies, and participate in lively discussion forums.<br>
+                      The app's advanced recommendation algorithm suggests new movies based on users' viewing histories and preferences, while the social media <br> integration allows users to share their reviews and engage with a broader community.
+                      Regular updates and featured editorials  from film experts <br> keep the content fresh and insightful.
+                      <i>PicturePulse</i> not only provides a platform for movie lovers to voice their opinions but also fosters a vibrant <BR> community united by their passion for cinema.</b></p>
+        </div>
+
+            <div class="team">
+                <h3>Meet the Team</h3>
+                <div class="team-member1">
+                    <b>Mukthar: <br><br> Web Developer</b>
+                    <dl>Maintains and updates the web app, ensuring smooth functionality and a user-friendly experience.</dl>
+                </div>
+
+                <div class="team-member2">
+                    <b>Jasir: <br><br> UI Designer</b>
+                    <dl>Designs the interface and user experience to make the app visually appealing and easy to navigate.</dl>
+                </div>
+
+                <div class="team-member3">
+                    <b>Noufal: <br><br> Data Analyst</b>
+                    <dl>Analyzes user data and feedback to inform content strategy and improve user engagement.</dl>
+                </div>
+            </div>
+    
+                    
+            <div class="row missionstory">
+                <div class="missiondiv mt-5">
+
+                <div class="missionhead">
+                    <h4>Our Mission</h4>
+                </div>
+                   <div class="mission">
+                        <p><b>At PicturePulse</b>,our mission is to provide movie enthusiasts with a comprehensive and engaging platform for discovering, reviewing, and discussing films.
+                         We aim to offer insightful reviews, up-to-date news, and personalized recommendations, creating a vibrant community where users can share
+                         their passion for cinema and find their next favorite movie.</p>
+                        <br><br>
+                    </div>
+                </div>
+
+                <div class="storydiv mt-5 ml-5">
+                        <div class="storyhead">
+                            <h3>Our Story</h3>
+                        </div>
+
+                    <div class="story">
+                        <p>"Born from a deep love of cinema, we started with a simple mission to create a vibrant community where film lovers 
+                            could share their passion. From lively discussions to insightful reviews,
+                            we're here to celebrate the art of storytelling on the silver screen. Join us in exploring the world of movies together!"
+                        </p>
+                    </div>
+
+                </div>  
+            </div>
+                
+        <div class="extro">
+            <h3>Why Choose Us?</h3>
+
+            <div class="points">
+                <li><b>Unbiased Reviews:</b> <br> Our reviews are free from industry influence.<br><br>
+                <li><b>Diverse Perspectives:</b> <br> We cover a wide range of genres and styles.<br><br>
+                <li><b>Community Driven:</b> <br> We value and incorporate feedback from our users.
+                <br><br>
+            </div>  
+
+        </div>
+
+        <div class="thanks">
+            <h4> <i>Thank you for visiting PicturePulse We hope our reviews guide you to some great movie experiences!</i> </h4>
+        </div>
+
+        <footer>
+            <div class="footerContainer">
+                <div class="socialIcons">
+                    <a href="//attach page link" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="https://wa.me/<Ph:no>" target="_blank"><i class="fa-brands fa-whatsapp"></i>
+                    <a href="https://www.facebook.com/<username>" target="_blank"><i class="fa-brands fa-facebook"></i>
+                </div>
+                <div class="footerNav">
+                    <ul>
+                        <li><a href=""><i class="fa-solid fa-house"></i></a></li>
+                        <li><a href=""><i class="fa-solid fa-newspaper"></i></a></li>
+                        <li><a href=""><i class="fa-solid fa-circle-info"></i></a></li>
+                        <li class="teamDropdown">
+                            <a href="#"><i class="fa-brands fa-teamspeak"></i></a>
+                                <div class="teamLinks">
+                                    <a href="https://www.instagram.com/_mukthar_ahammed_?utm_source=ig_web_button_share_sheet&igshid=ZDNlZDc0MzIxNw==" target="_blank">Mukthar</a>
+                                    <a href="https://www.instagram.com/_jasir__hussain__?utm_source=ig_web_button_share_sheet&igshid=ZDNlZDc0MzIxNw==" target="_blank">Jasir</a>
+                                    <a href="https://www.instagram.com/muhammed_n_o_u_f_a_l?utm_source=ig_web_button_share_sheet&igshid=ZDNlZDc0MzIxNw==" target="_blank">Noufal</a>
+                                </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </footer>
+    </div>
+</div>
+<style>
+     /*start nav*/
+  
+
+  .logo {
+    font-size: 23px;
+    margin-left: 7px;
+    color: yellow;
+  }
+
+  nav {
+    background: rgb(0, 0, 0);
+    height: 80px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-family: monospace;
+    font-weight: bolder;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    padding: 0 2rem;
+  }
+
+  nav ul {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 34%;
+    list-style-type: none;
+  }
+
+  nav ul li {
+    margin: 0 10px;
+  }
+
+  nav ul li a {
+    color: white;
+    font-size: 17px;
+    padding: 5px 10px;
+    border-radius: 3px;
+    text-transform: uppercase;
+  }
+
+  .search-main {
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+  }
+
+  .search {
+    display: flex;
+    align-items: center;
+  }
+
+  .search input[type="text"] {
+    width: 300px;
+    padding: 10px;
+    border: none;
+    border-radius: 20px;
+    background-color: black;
+    color: white;
+    height: 3rem;
+  }
+
+  .search button[type="submit"] {
+  background-color:rgb(255, 255, 255);
+  border: none;
+  color:rgb(0, 0, 0);
+  cursor: pointer;
+  padding: 10px 20px;
+  border-radius: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  position: absolute;
+  top: 1;
+  right: 0;
+  transition: .10s ease;
+  font-weight: bolder;
+  font-family: monospace;
+  width: 5rem;
+  font-size: 18px;
+  height:3rem;
+  margin-right: 32px;
+}
+
+.search button[type="submit"]:hover {
+  transform: scale(1.1);
+  color: yellow;
+  background-color: black;
+}
+
+  a.active, a:hover {
+    background: black;
+    transition: 0.2s;
+    color: yellow;
+    border-radius: 1rem;
+  }
+
+  @media (max-width: 992px) {
+    nav {
+      flex-direction: column;
+      padding: 0 1rem;
+    }
+
+    .search-main {
+      margin-top: 10px;
+      margin-left: 0;
+    }
+  }
+
+  @media (max-width: 576px) {
+    nav ul {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    nav ul li {
+      margin: 10px 0;
+    }
+
+    .search input[type="text"] {
+      width: 80%;
+    }
+
+    .search-main {
+      margin-top: 10px;
+    }
+  }
+  /*end nav*/
+
+    .about {
+        font-family: 'Arial', sans-serif;
+        padding: 20px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        border-radius: 10px;
+        color: black;
+        padding-top: 14rem;
+        
+    }
+
+    .aboutus h1 {
+        width: fit-content;
+        padding: 20px;
+        margin: 20px;
+        border-radius: 10px;
+        padding-bottom: 20px;
+        padding-left: 10px;
+    }
+
+    .aboutus .color1 {
+        color: rgba(255, 247, 21, 1);
+    }
+
+    .aboutus .color2 {
+        color: white;
+    }
+
+    .heading h2 {
+        text-align: center;
+        padding: 20px;
+        padding-left: 30px;
+        color: white;
+        font-size: 2.5em;
+    }
+
+    .heading p {
+        text-align: center;
+        padding-top: 20px;
+        font-size: 1.2em;
+        color: white;
+        padding: 10px;
+    }
+
+    .team {
+    color: white;
+    padding: 20px;
+    border-radius: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.75);
+    width: 45%;
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
+    opacity: 90%;
+    flex-direction: column; /* Add this line to ensure vertical stacking of elements */
+}
+
+.team h3 {
+    text-align: center; /* Center the text */
+    margin-bottom: 20px; /* Add margin to separate from team member divs */
+}
+
+.team-member1, .team-member2, .team-member3 {
+    border: 1px solid;
+    color: white;
+    width: 100%;
+    max-width: 25rem;
+    height: auto;
+    padding: 20px;
+    margin: 10px;
+    border-radius: 10px;
+    background: rgba(0, 0, 0, 1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: inline-block;
+    vertical-align: top;
+    text-align: left;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.team-member1 {
+    border: 1px solid rgba(255, 247, 21, 0.5);
+}
+
+.team-member2 {
+    border: 1px solid rgba(0, 122, 255, 1);
+}
+
+.team-member3 {
+    border: 1px solid rgba(255, 59, 48, 1);
+}
+
+.team-member1:hover, .team-member2:hover, .team-member3:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    background-color: rgb(0, 0, 0);
+}
+
+    .missionhead {
+        color: #fff;
+        display: flex;
+        text-align: left;
+        padding top: 10px;
+        padding-left: 30px;
+    }
+
+    .mission {
+        display: flex;
+        text-align: left;
+        color: white;
+        padding: 30px;
+    }
+
+    .missionstory {
+        margin-left: 390px !important;
+    }
+
+    .missiondiv {
+        border: 1px solid black;
+        border-radius: 1rem;
+        padding: 20px;
+        background: rgba(0, 0, 0, 0.75);
+        width: 500px;
+        box-sizing: border-box;
+    }
+
+    .storydiv {
+        border: 1px solid black;
+        border-radius: 1rem;
+        padding: 20px;
+        background: rgba(0, 0, 0, 0.75);
+        width: 500px;
+        box-sizing: border-box;
+    }
+
+    .storyhead {
+        color: #fff;
+        padding: 10px;
+    }
+
+    .story {
+        padding: 10px;
+        color: #fff;
+    }
+
+    .extro {
+        margin: 20px auto;
+        padding: 25px;
+    }
+
+    .extro h3, u {
+        margin: 20px auto;
+        color: #fff;
+    }
+
+    .points li {
+        color: white;
+        width: 250px;
+        padding: 20px;
+        border: 1px solid #ccc;
+        margin: 10px;
+        border: 1px solid rgba(0, 122, 255, 1);
+        border-radius: 10px;
+        background: rgba(0, 0, 0, 0.75);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        display: inline-block;
+        vertical-align: top;
+        text-align: left;
+        gap: 20px;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .points li:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    }
+
+    .extro li, .support li {
+        list-style-type: none;
+    }
+
+    .thanks {
+        text-align: center;
+        color: white;
+        margin-bottom: 50px;
+    }
+
+    * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+    }
+
+    footer {
+        width: 102%;
+        background: rgba(0, 0, 0, 0.75);
+        position: relative;
+        left: -20px;
+    }
+
+    .footerContainer {
+        padding: 50px 20px;
+    }
+
+    .socialIcons {
+        display: flex;
+        justify-content: center;
+    }
+
+    .socialIcons a {
+        text-decoration: none;
+        padding: 10px;
+        background-color: white;
+        margin: 10px;
+        border-radius: 50%;
+    }
+
+    .socialIcons a i {
+        font-size: 2em;
+        color: black;
+        opacity: 0.9;
+    }
+
+    .socialIcons a:hover {
+        background-color: #111;
+        transition: 0.3s;
+    }
+
+    .socialIcons a:hover i {
+        color: white;
+        transition: 0.2s;
+    }
+
+    .footerNav {
+        margin: 10px 0px;
+    }
+
+    .footerNav ul {
+        display: flex;
+        justify-content: center;
+        list-style-type: none;
+        margin-right: 30px;
+    }
+
+    .footerNav ul li a {
+        color: white;
+        margin: 20px;
+        text-decoration: none;
+        font-size: 1.3em;
+        opacity: 0.7;
+        transition: 0.2s;
+    }
+
+    .footerNav ul li a:hover {
+        opacity: 1;
+    }
+
+    @media (max-width: 700px) {
+    .footerNav ul {
+        flex-direction: column;
+    }
+
+    .footerNav ul li {
+        width: 100%;
+        text-align: center;
+        margin: 10px;
+    }
+
+    .socialIcons a {
+        padding: 8px;
+        margin: 4px;
+    }
+
+    .team {
+        flex-direction: column;
+        width: 100%;
+        margin-left: 0;
+        height: auto;
+        padding-right: 0;
+    }
+
+    .team-member1, .team-member2, .team-member3 {
+        width: 100%;
+        margin: 10px 0;
+        padding: 10px;
+        font-size: 0.9em;
+    }
+
+    .missionstory {
+        flex-direction: column;
+        align-items: center;
+        margin-left: 0 !important;
+    }
+
+    .missiondiv, .storydiv {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+}
+
+    .teamLinks {
+        display: none;
+        position: absolute;
+        background-color: black;
+        min-width: 50px;
+        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+        z-index: 1;
+        font-size: 10px;
+    }
+
+    .teamLinks a {
+        color: white;
+        padding: 2px;
+        text-decoration: none;
+        display: block;
+    }
+
+    .teamDropdown:hover .teamLinks {
+        display: flex;
+    }
+</style>
+
+ 

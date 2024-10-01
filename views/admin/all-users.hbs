@@ -7,14 +7,9 @@
     <li class="nav-item">
       <a class="nav-link" href='/admin/all-users'>USERS</a>
     </li>
-    <li class="nav-item">
+        <li class="nav-item">
       <a class="nav-link" href='/admin/add-movie'>ADD MOVIES</a>
     </li>
-    {{#if admin}}
-    <li class="nav-item">
-      <a class="nav-link" href='/admin/admin-logout'><i class="fa-sharp fa-solid fa-right-from-bracket" style="color:red;"></i></a>
-    </li>
-    {{/if}}
   </ul>
 <div class="search-main">
     <form action="/admin/search-admin" method="GET" class="search">
@@ -24,89 +19,77 @@
 </div>
 
 </nav>
-
-<section>
-  <div class="movie-container mt-3">
+ <section>
+  <div class="container">
  
-    <div class="row">
-      {{#each movies}}
-      <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12" style="padding-top: 2rem;">
-        <div class="card">
-          <img class="card-img-top" src="{{this.poster}}" alt="Card image cap">
-          <div class="card-body">
-            <h5 class="card-title">{{this.name}}</h5>
-            <p class="para">{{this.genre}}</p>
-            <div class="btn-container">
-                <a href="/admin/delete-movie/{{this._id}}" class="btn btn-danger"  onclick="return confirm ('Confirm to delete {{this.name}} from the Database')"><i class="fa-solid fa-trash"></i></a>
-                <a href="/admin/edit-movie/{{this._id}}" class="btn btn-primary"><i class="fa-solid fa-pen-to-square"></i></a>
-            </div>
-          </div>
-        </div>
-      </div>
-      {{/each}}
+    <div class="table-container">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Email<img src=""></th>
+            <th scope="col">Remove</th>
+         
+          </tr>
+        </thead>
+        <tbody>
+          {{#each users}}
+          <tr>
+            <td>{{this.username}}</td>
+            <td>{{this.email}}</td>
+            <td><a href="/admin/delete-user/{{this._id}}" class="btn " onclick=" return confirm('Delete user from database')">Delete</a></td>
+         
+          </tr>
+          {{/each}}
+        </tbody>
+      </table>
     </div>
   </div>
 </section>
 
 <style>
-* {
-  padding: 0;
-  margin: 0;
-  text-decoration: none;
-  list-style: none;
-  box-sizing: border-box;
-  background-position: fixed;
+.container{
+    padding-top: 6rem;
+}
+  .table-container {
+    margin-top: 2rem; /* Margin for spacing above the table */
+    background-color: black;
+   
+    
+}thead{
+    color: yellow;
+   
+}.btn{
+    background-color: yellow;
+    color: black;
+    border-radius: 2rem;
+    border-width: 0px;
+    width: 7rem;
+    height: 40px;
+    font-weight: bolder;
+
 }
 
-body {
-  font-family: "Montserrat", sans-serif;
-}
-.movie-container {
-  margin-top: 18rem;
-  padding: 0 8rem;
-  width: 100%;
-  margin-left: 3rem;
-  
-}
+  table {
+    width: 100%;
+    color: white;
+    border-collapse: collapse; /* Ensures borders are combined */
+    font-family: monospace;
+   
+  }
 
-.row {
-  display: flex;
-  flex-wrap: wrap;
-}
+  th, td {
+    border: 1px solid  rgba(255, 255, 255, 0.1);
+    padding: 0.5rem; 
+    text-align: center; 
+  }
 
-.card {
-  margin-top: 7rem;
-  background-color: black;
-  opacity: 0.9;
-  color: white;
-  width: 20rem;
-}
-
-.card-img-top {
-  height: 28rem;
-  object-fit: cover;
-  width: 18rem;
-  margin-left: 1rem;
-}
-
-.card-body {
-  text-align: center;
-}.btn-container{
-  display: flex;
-  gap: 4px;
-}
-
-.btn{
-  width: 40%;
-  background-color: yellow;
-  border-width: 0;
-  border-radius: 10rem;
-  color: black;
-  font-weight: bold;
-  margin-top: 6px;
-  font-family: monospace; 
-  margin: 1rem;
-}
+  th {
+    background-color: rgba(255, 255, 255, 0.1); 
+    border-top: 5px;
+ 
+  }
+/* table end*/
 .logo{
     font-size:23px;
     margin-left: 7px;
@@ -237,7 +220,6 @@ nav ul {
   margin-top: 2rem;
   position: fixed;
   margin-left: 10px;
-
 }
 
 nav ul li {
@@ -274,6 +256,4 @@ a.active, a:hover {
   }
 }
 /*nav end*/
-
-
 </style>

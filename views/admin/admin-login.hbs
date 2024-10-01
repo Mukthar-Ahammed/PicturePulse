@@ -1,0 +1,106 @@
+ <style>
+        .container {
+            display: flex;
+            margin-top: 75px;
+            margin-right: 38rem;
+            width: auto;
+            height: auto;
+            min-height: 100vh;
+            font-family: 'Jost', sans-serif;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .main {
+            width: 550px;
+            height: 700px;
+            justify-content: center;
+            background: linear-gradient(to bottom, rgba(255, 247, 21, 0.7), rgba(44, 44, 44, 0.7));
+            border-radius: 3rem;
+            overflow: hidden;
+            box-shadow: 5px 20px 50px #000;
+        }
+        #chk {
+            display: none;
+        }
+
+        .login {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .login label {
+            color: #000000;
+            font-size: 2.3em;
+            position: absolute;
+            display: flex;
+            top: 15%;
+            left: 50%;
+            transform: translateX(-50%);
+            font-weight: bold;
+        }
+
+        form {
+            width: 80%; 
+            max-width: 400px; 
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        input {
+            width: 100%;
+            height: 40px; 
+            background: #e0dede;
+            margin: 10px 0;
+            padding: 10px;
+            border: none;
+            outline: none;
+            border-radius: 5rem;
+            box-sizing: border-box; 
+        }
+
+        .login button {
+            width: 100%; 
+            height: 40px; 
+            margin-top: 20px;
+            color: #fff;
+            background: black;
+            font-size: 1em;
+            font-weight: bold;
+            outline: none;
+            border: none;
+            border-radius: 5rem;
+            cursor: pointer;
+            box-sizing: border-box; 
+        }
+
+        .inside {
+            font-size: 20px; 
+            font-family: monospace;
+            font-weight: bold;
+        }
+    </style>
+
+<body>
+    <div class="container"> 
+        <div class="main">
+            <input type="checkbox" id="chk" aria-hidden="true">
+            <div class="login">
+                <form action="/admin/admin-login" method="post">
+                    <div class="inside">
+                        <label for="chk" aria-hidden="true" style="font: size 40px;">Login</label>
+                        <input type="text" name="username" placeholder="Username" required>
+                        <input type="password" name="pswd" placeholder="Password" required>
+                        <button type="submit">Login</button>
+                    </div>
+                </form>
+            </div>
+        </div> 
+    </div>
