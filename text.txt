@@ -1,0 +1,4 @@
+// git add .
+//git commit -m "intial commit with gitignore"
+//git push -u origin Mukthar-branch
+echo node_modules/ > .gitignore  --The node module have been added to the gitignore file

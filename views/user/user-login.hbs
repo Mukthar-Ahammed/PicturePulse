@@ -1,0 +1,313 @@
+<style>
+* {
+  padding: 0;
+  margin: 0;
+  text-decoration: none;
+  list-style: none;
+  box-sizing: border-box;
+  background-position: fixed;
+}
+.container{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            font-family: 'Jost' ,sans-serif;
+            margin-left: 36rem;
+            
+}
+    
+    .main{
+        width: 40rem;
+        height: 40rem;
+        background: black;
+        opacity: 90%;
+        overflow: hidden;
+        border-radius: 10px;  
+        padding-bottom: 5px;
+
+    }
+    #chk{
+        display: none;
+    }
+    .signup{
+        position: relative;
+        width: 100%;
+        height: 100%;
+    }.signuphed{
+        font-family: monospace;
+    }
+    label{
+        color:white;
+        font-size: 2.3em;
+        justify-content: center;
+        display: flex;
+        margin: 60px;
+        font-weight: bolder;
+        cursor: pointer;
+        transition: .5s ease-in-out;
+    }
+    input{
+        width: 60%;
+        height: 3rem;
+        background: white;
+        color:black;
+        justify-content: center;
+        display: flex;
+        margin: 20px auto;
+        padding: 10px;
+        outline: none;
+        border-radius: 1rem;
+    }
+    
+    button{
+        width: 20%;
+        height: 54px;
+        margin: 10px auto;
+        justify-content: center;
+        display: block;
+        background:yellow;
+        font-size: 1rem;
+        margin-top: 40px;
+        outline: none;
+        border: none;
+        border-radius: 30px;
+        transition: .2s ease-in;
+        cursor: pointer;
+        color:black;
+        font-weight: bolder;
+        font-family:sans-serif;
+        
+
+
+    }
+    button:hover{
+        background:black;
+        color: yellow;
+        
+
+    }.loghed{
+    
+        font-family: monospace;
+        color: #fff;
+        margin-top: 2rem;
+    }
+    .login{
+        height: 580px;
+        background: black;
+        border-radius: 60% / 10%;
+        transform: translateY(-150px);
+        transition: .8s ease-in-out;
+        padding-top: 1px;
+        padding-bottom: 60px;
+        color: white ;
+    }
+    .login label{
+        color:white;
+        transform: scale(.7);
+        margin-bottom: 5rem;
+        
+
+    }
+    #chk:checked ~ .login{
+        transform: translateY(-570px);
+
+    }
+    #chk:checked ~ .login label{
+        transform: scale(1);
+
+    }
+    #chk:checked ~ .signup label{
+        transform: scale(0.9);
+    }
+    /*start nav*/
+  
+
+  .logo {
+    font-size: 23px;
+    margin-left: 7px;
+    color: yellow;
+  }
+
+  nav {
+    background: rgb(0, 0, 0);
+    height: 80px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-family: monospace;
+    font-weight: bolder;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    padding: 0 2rem;
+  }
+
+  nav ul {
+    display: flex;
+    align-items: center;
+    margin-left: 34%;
+  }
+
+  nav ul li {
+    margin: 0 10px;
+  }
+
+  nav ul li a {
+    color: white;
+    font-size: 17px;
+    padding: 5px 10px;
+    border-radius: 3px;
+    text-transform: uppercase;
+  }
+
+  .search-main {
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+  }
+
+  .search {
+    display: flex;
+    align-items: center;
+  }
+
+  .search input[type="text"] {
+    width: 300px;
+    padding: 10px;
+    border: none;
+    border-radius: 20px;
+    background-color: black;
+    color: white;
+    height: 3rem;
+  }
+
+  .search button[type="submit"] {
+  background-color:rgb(255, 255, 255);
+  border: none;
+  color:rgb(0, 0, 0);
+  cursor: pointer;
+  padding: 10px 20px;
+  border-radius: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  position: absolute;
+  top: 1;
+  right: 0;
+  transition: .10s ease;
+  font-weight: bolder;
+  font-family: monospace;
+  width: 5rem;
+  font-size: 18px;
+  height:3rem;
+  margin-right: 32px;
+  margin-top: 10px;
+}
+
+.search button[type="submit"]:hover {
+  transform: scale(1.1);
+  color: yellow;
+  background-color: black;
+}
+
+  a.active, a:hover {
+    background: black;
+    transition: 0.2s;
+    color: yellow;
+    border-radius: 1rem;
+  }
+
+  @media (max-width: 992px) {
+    nav {
+      flex-direction: column;
+      padding: 0 1rem;
+    }
+
+    .search-main {
+      margin-top: 10px;
+      margin-left: 0;
+    }
+  }
+
+  @media (max-width: 576px) {
+    nav ul {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    nav ul li {
+      margin: 10px 0;
+    }
+
+    .search input[type="text"] {
+      width: 80%;
+    }
+
+    .search-main {
+      margin-top: 10px;
+    }
+  }
+  /*end nav*/
+
+</style>
+  <nav>
+  <div class="logo-cont"><p class="logo">PicturePulse</p></div>
+  <ul>
+    <li class="nav-item active">
+      <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/user-about">About</a>
+    </li>
+    {{#unless user}}
+    <li class="nav-item">
+      <a href="/user-login" class="nav-link" style="text-decoration: none;">Login / Signup</a>
+    </li>
+    {{/unless}}
+    {{#if user}}
+    <li class="nav-item">
+      <a class="nav-link" href="/user-logout">Logout</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/user-profile"><i class="fa-solid fa-user" style="color: #FFD43B;"></i></a>
+    </li>
+    {{/if}}
+  </ul>
+  <div class="search-main">
+    <form action="/search" method="GET" class="search">
+      <input placeholder="Search..." type="text" name="q" required>
+      <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+    </form>
+  </div>
+</nav>
+<section>
+<div class="container">
+    <div class="main">
+        <input type="checkbox" id="chk" aria-hidden="true">
+        <div class="signup">
+            <form action="/user-signup" method="post">
+                <label class="signuphed" for="chk" aria-hidden="true">Signup</label>
+                <input type="text" name="username" placeholder="Username" required="true">
+                <input type="email" name="email" placeholder="Email" required="true">
+                <input type="password" name="password" placeholder="Password" required="true">
+                <button>Sign Up</button>
+            </form>
+        </div>
+        <div class="login">
+            <form action="/user-login" method="post">
+                <label class="loghed" for="chk" aria-hidden="true">Login</label>
+                <input type="email" name="email" placeholder="Email" required="true">
+                <input type="Password" name="password" placeholder="Password" required="true">
+                <button>Login</button>
+            </form>
+        </div> 
+    </div>
+    {{#if loginerr}}
+    <script>
+        alert("Incorrect Email or Password. Please try again.");
+    </script>
+    {{/if}}
+</div>
+</section>
+

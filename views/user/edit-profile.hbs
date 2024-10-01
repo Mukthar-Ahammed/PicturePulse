@@ -1,0 +1,209 @@
+<style>* {
+  padding: 0;
+  margin: 0;
+  text-decoration: none;
+  list-style: none;
+  box-sizing: border-box;
+  background-position: fixed;
+}
+  .form-group{
+    font-family: monospace;
+  }.container{
+    background-color: rgb(12, 12, 12);
+    width: 80rem;
+    height:60rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    border-radius: 3rem;
+    opacity: 90%;
+  }.btn{
+    background-color: yellow;
+    color: black;
+    font-weight: bolder;
+    width: 7rem;
+    border-radius: 1rem;
+    border-width: 0px;
+    opacity: 90%;
+  } .form-control{
+    border-radius: 1rem;
+    width: 30rem;
+
+  }.container-main{
+    margin-top: 2rem;
+  }
+  /*start nav*/
+  
+
+  .logo {
+    font-size: 23px;
+    margin-left: 7px;
+    color: yellow;
+  }
+
+  nav {
+    background: rgb(0, 0, 0);
+    height: 80px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-family: monospace;
+    font-weight: bolder;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    padding: 0 2rem;
+  }
+
+  nav ul {
+    display: flex;
+    align-items: center;
+    margin-left: 34%;
+  }
+
+  nav ul li {
+    margin: 0 10px;
+  }
+
+  nav ul li a {
+    color: white;
+    font-size: 17px;
+    padding: 5px 10px;
+    border-radius: 3px;
+    text-transform: uppercase;
+  }
+
+  .search-main {
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+  }
+
+  .search {
+    display: flex;
+    align-items: center;
+  }
+
+  .search input[type="text"] {
+    width: 300px;
+    padding: 10px;
+    border: none;
+    border-radius: 20px;
+    background-color: black;
+    color: white;
+    height: 3rem;
+  }
+
+  .search button[type="submit"] {
+  background-color:rgb(255, 255, 255);
+  border: none;
+  color:rgb(0, 0, 0);
+  cursor: pointer;
+  padding: 10px 20px;
+  border-radius: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  position: absolute;
+  top: 1;
+  right: 0;
+  transition: .10s ease;
+  font-weight: bolder;
+  font-family: monospace;
+  width: 5rem;
+  font-size: 18px;
+  height:3rem;
+  margin-right: 32px;
+}
+
+.search button[type="submit"]:hover {
+  transform: scale(1.1);
+  color: yellow;
+  background-color: black;
+}
+
+  a.active, a:hover {
+    background: black;
+    transition: 0.2s;
+    color: yellow;
+    border-radius: 1rem;
+  }
+
+  @media (max-width: 992px) {
+    nav {
+      flex-direction: column;
+      padding: 0 1rem;
+    }
+
+    .search-main {
+      margin-top: 10px;
+      margin-left: 0;
+    }
+  }
+
+  @media (max-width: 576px) {
+    nav ul {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    nav ul li {
+      margin: 10px 0;
+    }
+
+    .search input[type="text"] {
+      width: 80%;
+    }
+
+    .search-main {
+      margin-top: 10px;
+    }
+  }
+  /*end nav*/
+</style>
+  <nav>
+  <div class="logo-cont"><p class="logo">PicturePulse</p></div>
+  <ul>
+    <li class="nav-item active">
+      <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/user-about">About</a>
+    </li>
+    {{#unless user}}
+    <li class="nav-item">
+      <a href="/user-login" class="nav-link" style="text-decoration: none;">Login / Signup</a>
+    </li>
+    {{/unless}}
+    {{#if user}}
+    <li class="nav-item">
+      <a class="nav-link" href="/user-logout">Logout</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/user-profile"><i class="fa-solid fa-user" style="color: #FFD43B;"></i></a>
+    </li>
+    {{/if}}
+  </ul>
+  <div class="search-main">
+    <form action="/search" method="GET" class="search">
+      <input placeholder="Search..." type="text" name="q" required>
+      <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+    </form>
+  </div>
+</nav>
+<section class="container-main">
+    <div class="container mt-5">
+        <form action="/edit-profile/{{user._id}}" method="post">
+            <div class="form-group">
+                <label class="signuphed" for="chk" aria-hidden="true">Username</label>
+                <input type="text" class="form-control" name="username" placeholder="Username" required="true" value="{{user.username}}">
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" class="form-control" name="email" placeholder="Email" required="true" value="{{user.email}}">
+            </div>
+            <button type="submit" class="btn btn-success mt-4">Edit</button>
+        </form>
+    </div>
+</section>

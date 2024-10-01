@@ -1,0 +1,680 @@
+  <nav>
+  <div class="logo-cont"><p class="logo">PicturePulse</p></div>
+  <ul>
+    <li class="nav-item active">
+      <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/user-about">About</a>
+    </li>
+    {{#unless user}}
+    <li class="nav-item">
+      <a href="/user-login" class="nav-link" style="text-decoration: none;">Login / Signup</a>
+    </li>
+    {{/unless}}
+    {{#if user}}
+    <li class="nav-item">
+      <a class="nav-link" href="/user-logout">Logout</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/user-profile"><i class="fa-solid fa-user" style="color: #FFD43B;"></i></a>
+    </li>
+    {{/if}}
+  </ul>
+  <div class="search-main">
+    <form action="/search" method="GET" class="search">
+      <input placeholder="Search..." type="text" name="q" required>
+      <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+    </form>
+  </div>
+</nav>
+<div class="content">
+    {{#if user}}
+    <div class="fav-container"><a href="/favorites/{{movie._id}}" class="btn btn-primary"><i class="fa-solid fa-star fa-beat"></i></a></div>
+    {{/if}}
+    <div class="movie-info">
+        <img src="{{movie.poster}}" alt="Movie Poster" class="poster">
+        <div class="details">
+            <h1 class="hed">{{movie.name}}</h1>
+            <div class="det">
+                <i class="fa-solid fa-star" style="color: #FFD43B;"></i><b class="rate">{{movie.rating}}</b>
+            <p><strong>Duration</strong> {{movie.duration}}</p>
+            <p><strong>Director:</strong> {{movie.director}}</p>
+            <p><strong>Genre:</strong> {{movie.genre}}</p>
+            <p><strong>{{movie.year}}</strong> Release Date</p>
+            <p class="des"><strong>{{movie.description}}</strong> </p>
+            </div>
+        </div>
+    </div>
+    {{#if user}}
+    <div class="review-section">    
+        <h2>Post a Review</h2>
+        <form id="form-review" action="/review/{{movie._id}}" method="post" class="review">
+            <textarea name="review" placeholder="Write your review here..." required></textarea>
+            <button type="submit"><i class="fa-solid fa-share"></i></button>
+        </form> 
+    </div>
+    {{/if}}
+<div class="review-main">   
+    <div class="review-scroll">
+         {{#each reviews}}
+    {{#if this.toxicityResult.length}}
+    <div class="review-container">
+        <div class="review-box">
+            <div class="review-front">
+                <div class="review-display">
+                    <img src="https://www.pngall.com/wp-content/uploads/5/User-Profile-PNG.png" alt="User Profile" class="img">
+                    <div class="review-content">
+                        <p class="name">{{this.userDetails.username}}</p>
+                        <p class="date">{{this.date}}</p>
+                        <p class="review-disp" style="color:white;">[ This Review contains <a style="color: red;">Toxicity</a> ]</p>
+                    </div>
+                </div>
+            </div>
+            <div class="review-back">
+                <p class="toxicity"><b>This Review has Toxicity Score of</b></p>
+                <ul>
+                    {{#each this.toxicityResult}}
+                    {{#if this.match}}
+                    <li>{{this.label}}:<a style="color: red;">  {{this.score}}</a></li>
+                    {{/if}}
+                    {{/each}}
+                </ul>
+            </div>
+        </div>
+    
+    </div>
+    {{else}}
+    <div class="review-container">
+        <div class="review-box">
+            <div class="review-front2">
+                <div class="review-display">
+                    <img src="https://www.pngall.com/wp-content/uploads/5/User-Profile-PNG.png" alt="User Profile" class="img">
+                    <div class="review-content">
+                        <p class="name">{{this.userDetails.username}}</p>
+                        <p class="date">{{this.date}}</p>
+                        <p class="review-disp">{{this.reviewText}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {{/if}}
+    {{/each}}
+    </div>
+</div>
+ <h2 class="trailer-hed">Watch the Trailer</h2>
+   <div class="wrapper">
+    {{#each movie.trailer}}
+    <div class="trailer-section">
+        <video controls>
+            <source src="{{this.path}}" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+    {{/each}}
+   </div>
+<div class="audio-container">
+  <div class="audio">
+    {{#each movie.songs}}
+    <div class="audio-player">
+      <div class="player-content">
+        <div class="player-image">
+         <a class="image"><i class="fa-solid fa-music fa-shake fa-2xl" style="color: #FFD43B;"></i></a>   
+        </div>
+        <audio controls>
+          <source src="{{this.path}}" type="audio/mpeg">
+          Your browser does not support the audio element.
+        </audio>
+      </div>
+      
+    </div>
+    {{/each}}
+  </div>
+</div>
+<div class="cast-main">
+  <p class="cast-hed">Cast <i class="fa-solid fa-film"></i></p>
+  <p class="cast"><strong>{{movie.cast}}</strong></p>
+
+</div>
+<style>
+
+  
+ .cast-main{
+   background-color: rgb(10, 9, 9);
+   width: 100%;
+   height: 12rem;
+   margin-top: 6rem;
+   border-radius: 2rem;
+   padding-top: 15px;
+ }.cast-hed{
+  color: yellow;
+  font-size: 40px;
+  font-family: monospace;
+  margin-left: 30px;
+  letter-spacing: 2px;
+ }.cast{
+  font-size: 19px;
+  font-family: monospace;
+  margin-left: 2rem;
+  margin-top: 1rem;
+  font-weight: lighter;
+ }
+  
+  /*start nav*/
+  .logo {
+    font-size: 23px;
+    margin-left: 7px;
+    color: yellow;
+  }
+
+  nav {
+    background: rgb(0, 0, 0);
+    height: 80px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-family: monospace;
+    font-weight: bolder;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    padding: 0 2rem;
+  }
+
+  nav ul {
+    display: flex;
+    align-items: center;
+    margin-left: 34%;
+  }
+
+  nav ul li {
+    margin: 0 10px;
+  }
+
+  nav ul li a {
+    color: white;
+    font-size: 17px;
+    padding: 5px 10px;
+    border-radius: 3px;
+    text-transform: uppercase;
+  }
+
+  .search-main {
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+  }
+
+  .search {
+    display: flex;
+    align-items: center;
+  }
+
+  .search input[type="text"] {
+    width: 300px;
+    padding: 10px;
+    border: none;
+    border-radius: 20px;
+    background-color: black;
+    color: white;
+    height: 3rem;
+    margin-top: 7px;
+  }
+
+.search button[type="submit"] {
+  background-color:rgb(255, 255, 255);
+  border: none;
+  color:rgb(0, 0, 0);
+  cursor: pointer;
+  padding: 10px 20px;
+  border-radius: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  position: absolute;
+  top: 1;
+  right: 0;
+  transition: .10s ease;
+  font-weight: bolder;
+  font-family: monospace;
+  width: 5.5rem;
+  font-size: 18px;
+  height: 3.5rem;
+  margin-right: 30px;
+}
+
+.search button[type="submit"]:hover {
+  transform: scale(1.1);
+  color: yellow;
+  background-color: black;
+}
+
+  a.active, a:hover {
+    background: black;
+    transition: 0.2s;
+    color: yellow;
+    border-radius: 1rem;
+  }
+
+  @media (max-width: 992px) {
+    nav {
+      flex-direction: column;
+      padding: 0 1rem;
+    }
+
+    .search-main {
+      margin-top: 10px;
+      margin-left: 0;
+    }
+  }
+
+  @media (max-width: 576px) {
+    nav ul {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    nav ul li {
+      margin: 10px 0;
+    }
+
+    .search input[type="text"] {
+      width: 80%;
+    }
+
+    .search-main {
+      margin-top: 10px;
+    }
+  }
+  /*end nav*/
+.det{
+    font-size: 20px;
+}
+h1{
+    font-size: 3rem;
+}
+
+.audio-container {
+  width: 100%;
+  height: auto;
+  margin-top: 8rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+ margin-top: 13rem;
+ 
+}
+
+.audio {
+  width: 90%;
+  background-color: black;
+  padding: 2rem;
+  outline: none;
+  max-width: 100%;
+  height: auto;
+  display: flex;
+  overflow-x: scroll;
+  gap: 2rem; 
+  scrollbar-width: none;
+  scrollbar-color: white black; 
+  scrollbar-width: 100px;
+}
+
+
+.audio::-webkit-scrollbar {
+  max-width: 100px;
+  background-color: black; 
+}
+
+.audio::-webkit-scrollbar-thumb {
+  background-color: white; 
+  border-radius: 6px; 
+  border: 3px solid black; 
+}
+
+.audio-player {
+  margin: 1.5rem 0;
+  text-align: center;
+  width: 22rem;
+}
+
+.player-content {
+  background-color: black;
+  border-radius: 15px;
+  padding: 1rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); 
+  transition: transform 0.3s ease, box-shadow 0.3s ease; 
+}
+
+.player-content:hover {
+  transform: scale(1.05); 
+  box-shadow: 0 8px 16px rgba(255, 255, 255, 0.7); 
+}
+
+.player-image {
+  background-color: black;
+  width: 20rem;
+  height: 15rem;
+  overflow: hidden;
+  border-top-left-radius: 2rem;
+  border-top-right-radius: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+}
+
+.image {
+  object-fit: cover;
+  margin-bottom: 7rem;
+}
+
+audio {
+  width: 100%;
+  background-color: #ffffff;
+  border-bottom-left-radius: 2rem;
+  border-bottom-right-radius: 2rem;
+}
+
+
+
+@media (max-width: 768px) {
+  .audio {
+    width: 100%;
+  }
+
+  .player-image, audio {
+    width: 100%;
+    height: auto;
+  }
+}
+
+
+button{
+    font-weight: bolder;
+    font-family: sans-serif;
+}
+.wrapper{
+    max-width:100%;
+    height: auto;
+    display: flex;
+    overflow-x: scroll;
+    scrollbar-width:none;
+    scrollbar-color: rgb(255, 255, 255) rgb(0, 0, 0);
+}
+
+.trailer-hed{
+    margin-top: 6rem;
+    font-family: monospace;
+    color: yellow;
+    font-weight: bolder;
+}
+h2{
+    color: white;
+    letter-spacing: 2px;
+    
+}
+.trailer-section {
+    margin-top: 3rem;
+    background-color: rgb(0, 0, 0);
+    border-radius: 10px;
+}
+
+.trailer-section video {
+    max-width: 70rem;
+    height: 40rem;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    margin-right: 4rem;
+    
+}
+
+
+.review-scroll {
+    width: 100%;
+    height: auto;
+    margin-top: 4rem;
+    max-height: 400px; 
+    overflow-y: scroll;
+    scrollbar-width: none;
+    scrollbar-color: rgb(255, 255, 255) rgb(0, 0, 0);
+    scroll-behavior: smooth;
+    
+
+}
+.review-front2{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background-color: rgb(0, 0, 0);
+    color:white;
+    padding-left: 2rem;
+   
+}
+ul,li{
+    color: white;
+}
+.review-main{
+  width: 100%;
+  height: auto;
+  padding-top: 2rem;
+  margin-top: 3rem;
+}
+.review-container {
+    width: 100%;
+    perspective: 1000px;
+    height: auto;
+    margin-top: 2rem;
+}
+
+.review-box {
+    width: 100%;
+    height: 16rem;
+    background-color: black;
+    position: relative;
+    transition: transform 0.5s ease, opacity 0.5s ease;
+    overflow: hidden;
+}
+
+.review-front,
+.review-back {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background-color: rgb(0, 0, 0);
+    color:white;
+    font-family: monospace;
+    transition: transform 0.5s ease, opacity 0.5s ease;
+    padding-left: 2rem;
+    
+}
+
+.review-front {
+    z-index: 2;
+    transform: translateX(0);
+}
+
+.review-back {
+    z-index: 1;
+    transform: translateX(100%);
+    opacity: 0;
+    padding-top: 4rem;
+}
+
+.review-box:hover .review-front {
+    transform: translateX(-100%);
+    opacity: 0;
+}
+
+.review-box:hover .review-back {
+    transform: translateX(0);
+    opacity: 1;
+}
+
+.date {
+    color:#0000FF;
+    font-weight: bold;
+    font-family: monospace;
+    margin-top: 5px;
+}
+
+.name {
+    font-weight: bold;
+    font-family: monospace;
+    color: yellow;
+    margin-bottom: 5px;
+}
+
+.img {
+    width: 3.5rem;
+    height: 3.5rem;
+    background-color: black;
+    border-radius: 50%;
+    margin-right: 1rem;
+}
+
+.review-display {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background-color:black;
+   
+    
+}
+
+.review-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.display {
+    margin-top: 2rem;
+    width: 100%;
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.content {
+    position: absolute;
+    top: 16%;
+    left: 50%;
+    transform: translate(-50%, -10%);
+    background: rgba(0, 0, 0, 0.7);
+    padding: 20px;
+    border-radius: 10px;
+    width: 80rem;
+    color: white;
+    padding-bottom: 3rem;
+    font-family: monospace;
+    padding-top: 20rem;
+    
+}
+
+.movie-info {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: auto;
+}
+
+.poster {
+    width: 20rem;
+    margin-right: 20px;
+    border-radius: 10px;
+    height: 29rem;
+    margin-bottom: 6rem;
+}
+
+.details {
+    text-align: left;
+    margin-bottom: 8rem;
+    
+}
+
+.review-section {
+    margin-top: 3px;
+}
+
+textarea {
+    width: 100%;
+    height: 100px;
+    padding: 10px;
+    border-radius: 10px;
+    border: none;
+    resize: none;
+}
+
+button {
+    margin-top: 10px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 15px;
+    background-color: yellow;
+    color: #000;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+button:hover {
+    background-color: #ff6347;
+}
+
+.review {
+    margin-top: 2rem;
+}
+
+.star {
+    height: 25px;
+    width: 25px;
+    margin-bottom: 10px;
+}
+
+.des {
+    margin-top: 2rem;
+    font-size: 18px;
+}
+
+.rate {
+    margin-left: 10px;
+    font-size: 20px;
+}
+
+.btn {
+    margin-left: 64rem;
+    background-color: yellow;
+    margin-top: 10px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 15px;
+    color: #000;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.buttn {
+  background-color:white;
+  padding: 0.5rem 1rem;
+  font-weight: bolder;
+  font-family: monospace;
+  color:black;
+  border-radius: 2rem;
+  width: 8rem;
+  margin-top: 3rem;
+  height: 3rem;
+  font-size: 20px;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  text-decoration: none;
+  list-style: none;
+  box-sizing: border-box;
+  background-position: fixed;
+}
+</style>

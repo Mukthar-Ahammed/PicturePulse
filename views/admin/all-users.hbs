@@ -1,0 +1,259 @@
+<nav>
+     <div class="logo-cont"><p class="logo">Admin</p></div>
+  <ul>
+    <li class="nav-item active">
+      <a class="nav-link" href="/admin/view-products">MOVIES <span class="sr-only">(current)</span></a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href='/admin/all-users'>USERS</a>
+    </li>
+        <li class="nav-item">
+      <a class="nav-link" href='/admin/add-movie'>ADD MOVIES</a>
+    </li>
+  </ul>
+<div class="search-main">
+    <form action="/admin/search-admin" method="GET" class="search">
+        <input placeholder="Search..." type="text" name="q" required>
+        <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+    </form>
+</div>
+
+</nav>
+ <section>
+  <div class="container">
+ 
+    <div class="table-container">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Email<img src=""></th>
+            <th scope="col">Remove</th>
+         
+          </tr>
+        </thead>
+        <tbody>
+          {{#each users}}
+          <tr>
+            <td>{{this.username}}</td>
+            <td>{{this.email}}</td>
+            <td><a href="/admin/delete-user/{{this._id}}" class="btn " onclick=" return confirm('Delete user from database')">Delete</a></td>
+         
+          </tr>
+          {{/each}}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<style>
+.container{
+    padding-top: 6rem;
+}
+  .table-container {
+    margin-top: 2rem; /* Margin for spacing above the table */
+    background-color: black;
+   
+    
+}thead{
+    color: yellow;
+   
+}.btn{
+    background-color: yellow;
+    color: black;
+    border-radius: 2rem;
+    border-width: 0px;
+    width: 7rem;
+    height: 40px;
+    font-weight: bolder;
+
+}
+
+  table {
+    width: 100%;
+    color: white;
+    border-collapse: collapse; /* Ensures borders are combined */
+    font-family: monospace;
+   
+  }
+
+  th, td {
+    border: 1px solid  rgba(255, 255, 255, 0.1);
+    padding: 0.5rem; 
+    text-align: center; 
+  }
+
+  th {
+    background-color: rgba(255, 255, 255, 0.1); 
+    border-top: 5px;
+ 
+  }
+/* table end*/
+.logo{
+    font-size:23px;
+    margin-left: 7px;
+    color: yellow;
+    letter-spacing: 3px;
+}
+* {
+  padding: 0;
+  margin: 0;
+  text-decoration: none;
+  list-style: none;
+  box-sizing: border-box;
+  background-position: fixed;
+}.search-main {
+  margin-top: 2rem; /* Align with the navigation items */
+  
+}
+
+.search {
+  display: inline-block;
+  position: relative;
+  margin-left:110rem;
+ 
+}
+
+.search input[type="text"] {
+  width: 340px;
+  padding: 10px;
+  border: none;
+  border-radius: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background-color: black;
+  color: white;
+  height: 3rem;
+}
+
+.search button[type="submit"] {
+  background-color:rgb(255, 255, 255);
+  border: none;
+  color:rgb(0, 0, 0);
+  cursor: pointer;
+  padding: 10px 20px;
+  border-radius: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  position: absolute;
+  top: 1;
+  right: 0;
+  transition: .10s ease;
+  font-weight: bolder;
+  font-family: monospace;
+  width: 5rem;
+  font-size: 18px;
+  height:3rem;
+}
+
+.search button[type="submit"]:hover {
+  transform: scale(1.1);
+  color: yellow;
+  background-color: black;
+}
+
+a.active, a:hover {
+  background: black;
+  transition: 0.2s;
+  color: yellow;
+  border-radius: 1rem;
+}
+
+/* Adjust responsiveness for smaller screens */
+@media (max-width: 992px) {
+  nav {
+    justify-content: center; /* Center everything on smaller screens */
+  }
+
+  .search-main {
+    margin-top: 1rem; /* Adjust position of search on smaller screens */
+  }
+}
+
+@media (max-width: 576px) {
+  nav ul {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  nav ul li {
+    margin: 10px 0;
+  }
+
+  .search-main {
+    margin-top: 1rem;
+    order: 2; /* Make search come after the nav items on very small screens */
+  }
+}
+.buttn {
+  background-color:white;
+  padding: 0.5rem 1rem;
+  font-weight: bolder;
+  font-family: monospace;
+  color:black;
+  border-radius: 2rem;
+  width: 8rem;
+  margin-top: 3rem;
+  height: 3rem;
+  font-size: 20px;
+
+
+}
+
+nav {
+  background: rgb(0, 0, 0);
+  height: 80px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: monospace;
+  font-weight: bolder;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+}
+
+nav ul {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+  position: fixed;
+  margin-left: 10px;
+}
+
+nav ul li {
+  margin: 0 5px;
+}
+
+nav ul li a {
+  color: white;
+  font-size: 17px;
+  padding: 5px 10px;
+  border-radius: 3px;
+  text-transform: uppercase;
+}
+
+a.active, a:hover {
+  background: black;
+  transition: 0.2s;
+  color: yellow;
+  border-radius: 1rem;
+}
+@media (max-width: 576px) {
+  .head {
+    font-size: 2rem;
+  }
+  nav ul {
+    flex-direction: column;
+    align-items: center;
+  }
+  nav ul li {
+    margin: 10px 0;
+  }
+  .card-img-top {
+    height: 12rem;
+  }
+}
+/*nav end*/
+</style>
