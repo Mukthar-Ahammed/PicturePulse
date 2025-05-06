@@ -1,0 +1,2 @@
+-Create three folders uploads,trailers,song
+-install the node modules
